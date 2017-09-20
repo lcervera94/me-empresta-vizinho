@@ -1,0 +1,55 @@
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Edifício São Pedro');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Edificio Flamingo');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Belladock Bela Vista');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Edifício Urussuí');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Maxhouse Morumbi');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Clube Interlagos');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Terrara');
+
+INSERT INTO public.condominio(
+nome_condominio)
+VALUES ('Domínio Marajoara');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Livros');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Jogos');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Ferramentas');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Utilidades Domésticas');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Roupas ');
+
+INSERT INTO public.categoria(
+nome_categoria)
+VALUES ('Acessórios');
