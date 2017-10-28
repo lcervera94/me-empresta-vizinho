@@ -1,3 +1,65 @@
-<p>
-  cadastro works!
-</p>
+<div class="ui-g">
+  <div class="ui-g-6">
+    <div class="ui-g-6">
+      <div class="ui-g-12" style="height:45px">
+        Produto
+      </div>
+      <div class="ui-g-12" style="height:45px">
+        Categoria
+      </div>
+      <div class="ui-g-12" style="height:45px">
+        Preço
+      </div>
+      <div class="ui-g-12" style="height:45px">
+        Disponível de
+      </div>
+      <div class="ui-g-12" style="height:45px">
+        Até
+      </div>
+      <div class="ui-g-12" style="height:45px">
+        Descrição
+      </div>
+      <div class="ui-g-12">
+        <textarea [rows]="5" [cols]="59" pInputText></textarea>
+      </div>
+    </div>
+    <div class="ui-g-6">
+      <div class="ui-g-12">
+        <input type="text" pInputText style="width:200px"/>
+      </div>
+      <div class="ui-g-12">
+        <p-dropdown [options]="categorias" ></p-dropdown>
+      </div>
+      <div class="ui-g-12">
+        <p-spinner size="21"></p-spinner>
+      </div>
+      <div class="ui-g-12">
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+      </div>
+      <div class="ui-g-12">
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g-6">
+    <div class="ui-g-12">
+      <img src="../../../assets/fill.jpg" width="315">
+    </div>
+    <div class="ui-g-12">
+      <button pButton type="button" label="Selecionar imagem" style="width:315px" class="ui-button-info"></button>
+    </div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-12"></div>
+    <div class="ui-g-5"></div>
+    <div class="ui-g-1">
+      <button pButton type="button" label="Salvar" class="ui-button-info"></button>
+    </div>
+  </div>
+</div>

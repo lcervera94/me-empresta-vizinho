@@ -16,4 +16,9 @@ export class UsuarioService {
       return res.json().data;
     });
   }
+
+  salvaUsuario(tipoLocal : string, numero : string){
+    return this.http.get('http://localhost:8080/usuario/insere?tipoLocal=' + tipoLocal + '&numero=' + numero);
+  }
+
 }

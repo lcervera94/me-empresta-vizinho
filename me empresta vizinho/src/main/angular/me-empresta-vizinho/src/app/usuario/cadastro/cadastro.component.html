@@ -1,14 +1,36 @@
 <div class="ui-g ui-g-nopad">
+  <br />
   <div class="ui-g-12" style="text-align:center">
     Bem vindo, {{user.nome}}!
   </div>
+
   <div class="ui-g-12" style="text-align:center">
     Para concluir seu cadatro, preencha os dados abaixo
   </div>
+
   <div class="ui-g-2">
-    >image<
   </div>
-  <div class="ui-g-3">
-    <input type="text" pInputText/>
+  <div class="ui-g-4">
+    <img src="../../../assets/lucas.jpg" width="130">
   </div>
+  <div class="ui-g-6">
+    <div class="ui-g-12">
+      <p-dropdown [options]="tiposLocal" [(ngModel)]="localSelecionado"></p-dropdown>
+    </div>
+
+    <div class="ui-g-12">
+      <input placeholder="Número apartamento" type="text" [(ngModel)]="numero" pInputText style="width:145px"/>
+    </div>
+
+    <div class="ui-g-6">
+      <div align="center">
+        <button pButton type="button" label="Salvar" (click)="salvar()" style="align:center"
+                class="ui-button-primary"></button>
+      </div>
+    </div>
+  </div>
+
+
+
+
 </div>
