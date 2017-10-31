@@ -1,9 +1,16 @@
 package hello;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import DAO.CategoriaDAO;
+import DAO.CondominioDAO;
+import DAO.ProdutoDAO;
 import DAO.UsuarioDAO;
 import Conexao.Conexao;
+import Objetos.Categoria;
+import Objetos.Condominio;
+import Objetos.Produto;
 import Objetos.Usuario;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +24,9 @@ public class GreetingController {
 
     Conexao conexao = new Conexao();
     UsuarioDAO usuarioDAO = new UsuarioDAO(conexao.getConexao());
+    CategoriaDAO categoriaDAO = new CategoriaDAO(conexao.getConexao());
+    CondominioDAO condominioDAO = new CondominioDAO(conexao.getConexao());
+    ProdutoDAO produtoDAO = new ProdutoDAO(conexao.getConexao());
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -34,5 +44,25 @@ public class GreetingController {
         usuarioDAO.insert(usuario);
         return true;
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/categoria/selectAll")
+    public List<Categoria> getAllCategories() {
+        return categoriaDAO.selectAll();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/condominio/selectAll")
+    public List<Condominio> getAllCondominios() {
+        return condominioDAO.selectAll();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/produto/insere")
+    public boolean produtoInsere(@RequestBody Produto produto) {
+        produtoDAO.insert(produto);
+        return true;
+    }
+
 }
 

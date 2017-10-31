@@ -6,13 +6,13 @@ public class Produto {
 	private int idProduto;
 	private String nomeProduto;
 	private String descProduto;
-	private int idCategoria; 
+	private int idCategoria;
 	private int idUsuario;
 	private double vl_preco;
-	private LocalDate data_inicio;
-	private LocalDate data_fim;
+	private long data_inicio;
+	private long data_fim;
 	private String link_imagem;
-	
+
 	public int getIdProduto() {
 		return idProduto;
 	}
@@ -49,16 +49,16 @@ public class Produto {
 	public void setVl_preco(double vl_preco) {
 		this.vl_preco = vl_preco;
 	}
-	public LocalDate getData_inicio() {
+	public long getData_inicio() {
 		return data_inicio;
 	}
-	public void setData_inicio(LocalDate data_inicio) {
+	public void setData_inicio(long data_inicio) {
 		this.data_inicio = data_inicio;
 	}
-	public LocalDate getData_fim() {
+	public long getData_fim() {
 		return data_fim;
 	}
-	public void setData_fim(LocalDate data_fim) {
+	public void setData_fim(long data_fim) {
 		this.data_fim = data_fim;
 	}
 	public String getLink_imagem() {

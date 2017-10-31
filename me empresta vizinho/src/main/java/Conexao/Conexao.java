@@ -16,7 +16,7 @@ public class Conexao {
         if (conexao == null) {
             String url = "jdbc:postgresql://localhost:5432/me_empresta_vizinho";
             String usuario = "postgres";
-            String senha = "gb.kf.08132310";
+            String senha = "290994";
             String driver = "org.postgresql.Driver";
 
             try {

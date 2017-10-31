@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SelectItem} from "primeng/primeng";
+import {ProdutoService} from "../produto.service";
+import {ProdutoModel} from "../../model/produto.model";
 
 @Component({
   selector: 'app-cadastro',
@@ -8,20 +10,46 @@ import {SelectItem} from "primeng/primeng";
 })
 export class CadastroComponent implements OnInit {
 
-  categorias: SelectItem[] = [
-    {label: 'Selecione...',         value: null},
-    {label: 'Livro',                value: 'livro'},
-    {label: 'Jogo',                 value: 'jogo' },
-    {label: 'Ferramenta',           value: 'ferramenta' },
-    {label: 'Utilidade doméstica',  value: 'utilDomest'},
-    {label: 'Roupa',                value: 'roupa' },
-    {label: 'Acessórios',           value: 'acessorio' }
-    ];
+  categories: SelectItem[] = [
+    {label: 'Selecione...', value: null}
+  ];
+  selectedCategory: number = null;
+  product: ProdutoModel = {
+    idProduto: null,
+    nomeProduto: null,
+    descProduto: null,
+    data_fim: null,
+    data_inicio: null,
+    idCategoria: null,
+    idUsuario: null,
+    link_imagem: null,
+    vl_preco: null
+  };
+  initialDate = new Date();
+  finalDate = new Date();
 
-  constructor() {
+  constructor(private produtoService: ProdutoService) {
   }
 
   ngOnInit() {
+    this.getAllCategories();
+  }
+
+  getAllCategories() {
+    this.produtoService.getAllCategories().forEach((observable) => {
+      observable.forEach((category) => {
+        this.categories.push({label: category.nomeCategoria, value: category.id});
+      });
+    });
+  }
+
+  salvar() {
+    // this.product.data_inicio = this.initialDate.getTime();
+    // this.product.data_fim = this.finalDate.getTime();
+    this.product.idUsuario = 1;
+    if (this.produtoService.insertProduct(this.product).subscribe()) {
+      alert('Produto inserido com sucesso');
+    }
   }
 
 }

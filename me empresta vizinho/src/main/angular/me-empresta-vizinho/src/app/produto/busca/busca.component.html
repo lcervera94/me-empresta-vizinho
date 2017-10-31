@@ -1,0 +1,31 @@
+<div class="ui-g">
+  <div class="ui-g-12" style="font-size:36px;text-align:center">
+    O que você precisa emprestado?
+  </div>
+  <div class="ui-g-3">
+  </div>
+  <div class="ui-g-3">
+    Nome
+  </div>
+  <div class="ui-g-3">
+    Categoria
+  </div>
+  <div class="ui-g-3">
+  </div>
+  <div class="ui-g-3">
+  </div>
+  <div class="ui-g-3">
+    <input type="text" pInputText [(ngModel)]="searchText" style="width:200px"/>
+  </div>
+  <div class="ui-g-3">
+    <p-dropdown [options]="categories" [(ngModel)]="searchCategory"></p-dropdown>
+  </div>
+  <div class="ui-g-3">
+    <button pButton type="button" label="Buscar" (click)="search()" class="ui-button-info"></button>
+  </div>
+</div>
+<br/>
+<p-dataTable [value]="productGrid">
+  <p-column field="nomeProduto" header="Produto"></p-column>
+  <p-column field="descProduto" header="Descrição"></p-column>
+</p-dataTable>
