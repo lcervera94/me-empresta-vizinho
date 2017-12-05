@@ -13,14 +13,84 @@ import Objetos.Produto;
 import Objetos.Usuario;
 
 public class ProdutoDAO {
-    private Connection connection;
+    private ArrayList<Produto> produtos = new ArrayList<Produto>();
 
-    public ProdutoDAO(Connection connection) {
-        this.connection = connection;
+    public ProdutoDAO() {
+
+        Produto livro = new Produto();
+        livro.setIdProduto(1);
+        livro.setNomeProduto("TOEFL IBT");
+        livro.setDescProduto("Livro para ajudar no preparatório do exame TOEFL. Acompanha CD com áudio.");
+        livro.setIdCategoria(88);
+        livro.setLink_imagem("../../../assets/toefl.jpg");
+        livro.setVl_preco(0);
+        livro.setIdUsuario(1);
+        livro.setEmprestado(true);
+        livro.setIdTomador(2);
+        livro.setNomeTomador("Redher Wetzl");
+        livro.setAprovado(true);
+        produtos.add(livro);
+
+        Produto escada = new Produto();
+        escada.setIdProduto(2);
+        escada.setNomeProduto("ESCADA");
+        escada.setDescProduto("Escada de alumínio 1,5m");
+        escada.setIdCategoria(99);
+        escada.setLink_imagem("../../../assets/escada.jpg");
+        escada.setVl_preco(0);
+        escada.setIdUsuario(1);
+        escada.setIdTomador(0);
+        escada.setEmprestado(false);
+        escada.setAprovado(false);
+        produtos.add(escada);
+
+        Produto martelo = new Produto();
+        martelo.setIdProduto(3);
+        martelo.setNomeProduto("MARTELO");
+        martelo.setDescProduto("");
+        martelo.setIdCategoria(99);
+        martelo.setLink_imagem("../../../assets/martelo.jpg");
+        martelo.setVl_preco(0);
+        martelo.setIdUsuario(1);
+        martelo.setIdTomador(2);
+        martelo.setEmprestado(true);
+        martelo.setAprovado(false);
+        produtos.add(martelo);
+
+        Produto ferro = new Produto();
+        ferro.setIdProduto(4);
+        ferro.setNomeProduto("FERRO DE PASSAR");
+        ferro.setDescProduto("Ferro de passar black and decker");
+        ferro.setIdCategoria(99);
+        ferro.setLink_imagem("../../../assets/ferro.jpg");
+        ferro.setVl_preco(0);
+        ferro.setIdUsuario(2);
+        ferro.setEmprestado(true);
+        ferro.setIdTomador(1);
+        ferro.setNomeTomador("Lucas Pipa Cervera");
+        ferro.setAprovado(true);
+        produtos.add(ferro);
+
+        Produto aspirador = new Produto();
+        aspirador.setIdProduto(3);
+        aspirador.setNomeProduto("ASPIRADOR DE PÓ");
+        aspirador.setDescProduto("Bico de 2m");
+        aspirador.setIdCategoria(99);
+        aspirador.setLink_imagem("../../../assets/aspirador.jpg");
+        aspirador.setVl_preco(0);
+        aspirador.setIdUsuario(2);
+        aspirador.setNomeTomador("Lucas Pipa Cervera");
+        aspirador.setIdTomador(1);
+        aspirador.setEmprestado(true);
+        aspirador.setAprovado(true);
+        produtos.add(aspirador);
+
     }
 
     public void insert(Produto produto) {
-        String sql = "INSERT INTO produto(nome_produto, descricao_produto, id_categoria, id_usuario, vl_preco, data_inicio, data_fim, link_imagem) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        produto.setIdProduto(produtos.size());
+        produtos.add(produto);
+        /*String sql = "INSERT INTO produto(nome_produto, descricao_produto, id_categoria, id_usuario, vl_preco, data_inicio, data_fim, link_imagem) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, produto.getNomeProduto());
@@ -34,22 +104,31 @@ public class ProdutoDAO {
             stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void delete(int id) {
-        String sql = "DELETE FROM produto WHERE id_produto = ?";
+        Produto selecionado = null;
+        for (Produto p :
+                produtos) {
+            if (p.getIdProduto() == id) {
+                selecionado = p;
+            }
+        }
+        produtos.remove(selecionado);
+        /*String sql = "DELETE FROM produto WHERE id_produto = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
-    public List selectAll() {
-        String sql = "SELECT * FROM produto";
+    public List<Produto> selectAll() {
+        return produtos;
+        /*String sql = "SELECT * FROM produto";
         ArrayList<Produto> resultado = new ArrayList<>();
 
         try {
@@ -73,13 +152,30 @@ public class ProdutoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resultado;
+        return resultado;*/
+    }
+
+    public Produto findProductById(int id) {
+        for (Produto p :
+                produtos) {
+            if (p.getIdProduto() == id) {
+                return p;
+            }
+        }
+        return null;
     }
 
     public List findProductsByUserId(int userId) {
-        String sql = "SELECT * FROM produto WHERE id_usuario = ?";
+        //String sql = "SELECT * FROM produto WHERE id_usuario = ?";
         ArrayList<Produto> resultado = new ArrayList<>();
 
+        for (Produto p :
+                produtos) {
+            if(p.getIdUsuario() == userId && (p.isAprovado() || !p.isEmprestado())){
+                resultado.add(p);
+            }
+        }
+/*
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, userId);
@@ -100,14 +196,21 @@ public class ProdutoDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return resultado;
-    }
+}
 
     public List findProductsByCategoryId(int categoryId) {
-        String sql = "SELECT * FROM produto WHERE id_categoria = ?";
+        //String sql = "SELECT * FROM produto WHERE id_categoria = ?";
         ArrayList<Produto> resultado = new ArrayList<>();
 
+        for (Produto p :
+                produtos) {
+            if (p.getIdCategoria() == categoryId) {
+                resultado.add(p);
+            }
+        }
+        /*
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, categoryId);
@@ -128,7 +231,7 @@ public class ProdutoDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return resultado;
     }
 }

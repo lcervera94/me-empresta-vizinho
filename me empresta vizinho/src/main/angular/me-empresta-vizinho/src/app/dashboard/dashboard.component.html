@@ -1,7 +1,90 @@
-<button pButton type="button" label="Editar perfil" (click)="editarPerfil()" class="ui-button-info"></button>
+<div class="ui-g ui-g-nopad">
+  <div class="ui-g-5">
+  </div>
+  <div class="ui-g-7">
+    <div class="ui-g-12">
+      <button pButton type="button" label="O que quer emprestado?" (click)="buscarProduto()" class="ui-button"></button>
+    </div>
+    <div class="ui-g-2">
+      <img src="../../../assets/lucas.jpg" width="90">
+    </div>
+    <div class="ui-g-10">
+      {{usuario.nomeUsuario}}
+    </div>
+  </div>
+</div>
 
-<button pButton type="button" label="Cadastrar produto" (click)="cadastrarProduto()" class="ui-button-info"></button>
+<div class="ui-g ui-g-nopad">
 
-<button pButton type="button" label="Buscar produto" (click)="buscarProduto()" class="ui-button-info"></button>
+  <div class="ui-g-4" style="text-align:center">
+    Meus Produtos
+    <br/>
+    <button pButton type="button" label="Cadastrar novo produto" (click)="cadastrarProduto()"
+            class="ui-button-info"></button>
+    <ng-container *ngFor="let meuProduto of meusProdutos">
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <img [src]="meuProduto.link_imagem" width="90">
+        </div>
+        <div class="ui-g-8">
+          {{meuProduto.nomeProduto}}
+          <ng-container *ngIf="meuProduto.emprestado">
+            com {{meuProduto.nomeTomador}}
+          </ng-container>
+          <ng-container *ngIf="!meuProduto.emprestado">
+            está disponível
+          </ng-container>
+          <br />
+          <br />
+          <button pButton type="button" *ngIf="meuProduto.emprestado" label="Devolveu" (click)="devolveu(meuProduto)" class="ui-button-info"></button>
+          <!--<button pButton type="button" label="Editar" (click)="editarProduto(meuProduto)"-->
+                  <!--class="ui-button-info"></button>-->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="ui-g-4" style="text-align:center">
+    Pedidos
+    <ng-container *ngFor="let pedido of pedidos">
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <img [src]="pedido.link_imagem" width="90">
+        </div>
+        <div class="ui-g-8">
+          {{pedido.nomeProduto}}
+          <br />
+          Redher Wetzl quer emprestado
+          <br />
+          <button pButton type="button" *ngIf="pedido.emprestado" label="Negar" (click)="negar(pedido)" class="ui-button-info"></button>
+          <button pButton type="button" *ngIf="pedido.emprestado" label="Aceitar" (click)="aceitar(pedido)" class="ui-button-info"></button>
+          <!--<button pButton type="button" label="Editar" (click)="editarProduto(meuProduto)"-->
+          <!--class="ui-button-info"></button>-->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="ui-g-4" style="text-align:center">
+    Comigo
+    <ng-container *ngFor="let pc of produtosComigo">
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <img [src]="pc.link_imagem" width="90">
+        </div>
+        <div class="ui-g-8">
+          {{pc.nomeProduto}}
+            de Redher Wetzl
+          <br />
+          <br />
+          <button pButton type="button" label="Devolver" (click)="devolver(pc)" class="ui-button-info"></button>
+          <!--<button pButton type="button" label="Editar" (click)="editarProduto(meuProduto)"-->
+          <!--class="ui-button-info"></button>-->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>
 
 

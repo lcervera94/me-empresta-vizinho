@@ -10,6 +10,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HomeComponent} from './home/home.component';
 import {FacebookModule, FacebookService} from "ngx-facebook";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {UsuarioService} from "./usuario/usuario.service";
+import {ProdutoService} from "./produto/produto.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ButtonModule,
     FacebookModule
   ],
-  providers: [FacebookService],
+  providers: [FacebookService, UsuarioService, ProdutoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

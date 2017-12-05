@@ -13,8 +13,41 @@ export class BuscaComponent implements OnInit {
 
   searchCategory: number;
   searchText: string;
+  dateTeste = new Date().getTime();
   categories: SelectItem[] = [{label: "Selecione", value: null}];
-  productGrid: ProdutoModel[] = [];
+  // productGrid: ProdutoModel[] = [{
+  //   idProduto: 1,
+  //   nomeProduto: 'Nome 1',
+  //   descProduto: 'Desc 1',
+  //   idCategoria: 2,
+  //   idUsuario: 1,
+  //   vl_preco: 10,
+  //   data_inicio: this.dateTeste,
+  //   data_fim: this.dateTeste,
+  //   link_imagem: ''
+  // },
+  //   {
+  //     idProduto: 1,
+  //     nomeProduto: 'Nome 2',
+  //     descProduto: 'Desc 2',
+  //     idCategoria: 2,
+  //     idUsuario: 1,
+  //     vl_preco: 10,
+  //     data_inicio: this.dateTeste,
+  //     data_fim: this.dateTeste,
+  //     link_imagem: ''
+  //   },
+  //   {
+  //     idProduto: 1,
+  //     nomeProduto: 'Nome 2',
+  //     descProduto: 'Desc 2',
+  //     idCategoria: 2,
+  //     idUsuario: 1,
+  //     vl_preco: 10,
+  //     data_inicio: this.dateTeste,
+  //     data_fim: this.dateTeste,
+  //     link_imagem: ''
+  //   }];
 
   constructor(private router: Router,
               private produtoService: ProdutoService) {
@@ -33,20 +66,20 @@ export class BuscaComponent implements OnInit {
   }
 
   search() {
-    let i = 0;
-    for (i = 1; i < 15; i++) {
-      this.productGrid.push({
-        idProduto: 1,
-        nomeProduto: 'Livro ' + i,
-        descProduto: 'Livro ' + i + ' - ' + i + '50 páginas',
-        idCategoria: 49,
-        idUsuario: 1,
-        vl_preco: 10,
-        data_inicio: new Date().getTime(),
-        data_fim: new Date().getTime(),
-        link_imagem: null
-      });
-    }
+    // let i = 0;
+    // for (i = 1; i < 15; i++) {
+    //   this.productGrid.push({
+    //     idProduto: 1,
+    //     nomeProduto: 'Livro ' + i,
+    //     descProduto: 'Livro ' + i + ' - ' + i + '50 páginas',
+    //     idCategoria: 49,
+    //     idUsuario: 1,
+    //     vl_preco: 10,
+    //     data_inicio: new Date().getTime(),
+    //     data_fim: new Date().getTime(),
+    //     link_imagem: null
+    //   });
+    // }
   }
 
 }

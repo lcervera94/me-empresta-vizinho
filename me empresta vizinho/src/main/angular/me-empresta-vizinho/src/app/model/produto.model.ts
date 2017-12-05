@@ -8,4 +8,7 @@ export class ProdutoModel {
   data_inicio : number;
   data_fim : number;
   link_imagem : string;
+  idTomador: number;
+  nomeTomador: string;
+  emprestado: boolean;
 }

@@ -23,7 +23,10 @@ export class CadastroComponent implements OnInit {
     idCategoria: null,
     idUsuario: null,
     link_imagem: null,
-    vl_preco: null
+    vl_preco: null,
+    nomeTomador: null,
+    idTomador: null,
+    emprestado: false
   };
   initialDate = new Date();
   finalDate = new Date();

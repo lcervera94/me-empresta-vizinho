@@ -4,6 +4,7 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {CondominioModel} from "../model/condominio.model";
+import {UsuarioModel} from "../model/usuario.model";
 
 
 @Injectable()
@@ -32,7 +33,10 @@ export class UsuarioService {
 
   getAllCondominios() : Observable<CondominioModel[]>{
     return this.http.get('http://localhost:8080/condominio/selectAll').map(this.extractData);
+  }
 
+  getUsuario(idUsuario : number): Observable<UsuarioModel>{
+    return this.http.get('http://localhost:8080/usuario?id=' + idUsuario).map(this.extractData);
   }
 
 }

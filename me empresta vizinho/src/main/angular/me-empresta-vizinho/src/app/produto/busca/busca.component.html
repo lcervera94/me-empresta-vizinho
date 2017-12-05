@@ -25,7 +25,18 @@
   </div>
 </div>
 <br/>
-<p-dataTable [value]="productGrid">
-  <p-column field="nomeProduto" header="Produto"></p-column>
-  <p-column field="descProduto" header="Descrição"></p-column>
-</p-dataTable>
+<ng-container *ngFor="let product of productGrid">
+  <div class="ui-g ui-g-nopad">
+    <div class="ui-g-1">
+      <img src="../../../assets/fill.jpg" width="90">
+    </div>
+    <div class="ui-g-1">
+      {{product.nomeProduto}},
+      <br/>
+      de {{product.idUsuario}}
+    </div>
+    <div class="ui-g-1">
+      <button pButton type="button" label="Pedir" (click)="pedir(product)" class="ui-button-info"></button>
+    </div>
+  </div>
+</ng-container>
